@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার বই - সম্পূর্ণ ফ্রন্ট পেজ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* বেসিক রিসেট এবং ফন্ট সেটআপ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+        }
+
+        /* নেভিগেশন বার স্টাইলিং */
+        .navbar {
+            background-color: #2c3e50; /* গাঢ় নীল ব্যাকগ্রাউন্ড */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        /* মেনু কন্টেইনার */
+        .menu-container {
+            display: flex;
+        }
+
+        .menu-container ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* প্রধান মেনু আইটেম */
+        .menu-container ul li {
+            position: relative; /* ড্রপডাউনের জন্য এটি জরুরি */
+            margin-left: 20px;
+        }
+
+        .menu-container ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            display: block;
+            font-weight: 600;
+            transition: 0.3s;
+            border-radius: 4px;
+        }
+
+        .menu-container ul li a:hover {
+            background-color: #34495e;
+            color: #3498db;
+        }
+
+        /* --- ড্রপডাউন মেনু স্টাইলিং --- */
+        
+        /* ড্রপডাউন লিস্ট লুকানো থাকবে */
+        .dropdown-menu {
+            display: none; 
+            position: absolute;
+            top: 100%; /* প্যারেন্ট li এর ঠিক নিচে */
+            left: 0;
+            background-color: #34495e;
+            min-width: 200px; /* ড্রপডাউনের প্রস্থ */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* ড্রপডাউনের ভিতরের আইটেমগুলো */
+        .dropdown-menu li {
+            margin-left: 0 !important; /* প্রধান মেনুর মার্জিন বাদ দেওয়া */
+            border-bottom: 1px solid #2c3e50;
+        }
+
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 15px;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #2c3e50;
+            padding-left: 20px; /* হোভারে একটু ডানে সরে যাবে */
+        }
+
+        /* হোভার করলে ড্রপডাউন দেখানো (ম্যাজিক পার্ট) */
+        .menu-container ul li:hover .dropdown-menu {
+            display: block; /* মাউস নিলে দেখা যাবে */
+        }
+        
+        /* ড্রপডাউন আইকন (তীর চিহ্ন) */
+        .fa-caret-down {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+
+
+        /* --- ফ্রন্ট পেজ হিরো সেকশন ( সৌন্দর্যের জন্য) --- */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* মোবাইল রেসপন্সিভ এর জন্য সাধারণ মিডিয়া কোয়েরি */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .menu-container ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+            }
+            .menu-container ul li {
+                margin-left: 0;
+                width: 100%;
+            }
+            .dropdown-menu {
+                position: relative; /* মোবাইলে রিলেটিভ পজিশন ভালো কাজ করে */
+                width: 100%;
+            }
+            .hero-section h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">আমার বইয়ের নাম</a>
+
+        <div class="menu-container">
+            <ul>
+                <li><a href="#home">হোম</a></li>
+
+                <li>
+                    <a href="#about">বই পরিচিতি <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#preface">ভূমিকা (Preface)</a></li>
+                        <li><a href="#dedication">উৎসর্গ (Dedication)</a></li>
+                        <li><a href="#foreword">মুখবন্ধ (Foreword)</a></li>
+                        <li><a href="#toc">সূচিপত্র (Table of Contents)</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#read">বই পড়ুন <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#part1">প্রথম খণ্ড: শুরু</a></li>
+                        <li><a href="#chapter1">--- অধ্যায় ১</a></li>
+                        <li><a href="#chapter2">--- অধ্যায় ২</a></li>
+                        <li><a href="#part2">দ্বিতীয় খণ্ড: মধ্যভাগ</a></li>
+                        <li><a href="#chapter3">--- অধ্যায় ৩</a></li>
+                        <li><a href="#all-chapters">সকল অধ্যায় একনজরে</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#backmatter">পরিশিষ্ট <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#glossary">শব্দকোষ (Glossary)</a></li>
+                        <li><a href="#bibliography">তথ্যসূত্র (Bibliography)</a></li>
+                        <li><a href="#acknowledgement">কৃতজ্ঞতা স্বীকার</a></li>
+                    </ul>
+                </li>
+
+                 <li><a href="#author">লেখক পরিচিতি</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header class="hero-section">
+        <h1>আমার বইয়ের নাম: একটি কাল্পনিক উপন্যাস</h1>
+        <p>এই ওয়েবসাইটে আপনি বইটির সম্পূর্ণ অংশ অনলাইনে পড়তে পারবেন। উপরের মেনু থেকে আপনার পছন্দনীয় অধ্যায়টি বেছে নিন।</p>
+        <a href="#chapter1" class="btn">পড়া শুরু করুন</a>
+    </header>
+
+    <section style="padding: 50px; text-align: center;">
+        <h2>বইটির সংক্ষিপ্তসার</h2>
+        <p style="margin-top: 20px;">এখানে বইটির মূল বিষয়বস্তু সম্পর্কে কিছু লেখা থাকবে...</p>
+    </section>
+
+</body>
+</html>
